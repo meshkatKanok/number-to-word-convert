@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button id="btn">submit</button>
+    <h1 id="showdata">
+        
+    </h1>
+    <script>
+        document.getElementById('btn').addEventListener('click', function () {
+            let data = document.getElementById('input').value
+            let showdata = document.getElementById('showdata');
+          
+
+          
+
+            let oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
+                'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+            let alldata = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+            if (data.toString().length > 7) return  showdata.innerHTML = 'overlimit';
+            let num = ('0000000' + data).slice(-7).match(/^(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
+            if (!num) return;
+
+            let showtext = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${alldata[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + ' million ' : '';
+
+            showtext += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${alldata[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + 'hundred ' : '';
+            showtext += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${alldata[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + ' thousand ' : '';
+            showtext += num[4] != 0 ? (oneToTwenty[Number(num[4])] || `${alldata[num[4][0]]} ${oneToTwenty[num[4][1]]}`) + 'hundred ' : '';
+            showtext += num[5] != 0 ? (oneToTwenty[Number(num[5])] || `${alldata[num[5][0]]} ${oneToTwenty[num[5][1]]} `) : '';
+
+            showdata.innerHTML =showtext;
+        })
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
